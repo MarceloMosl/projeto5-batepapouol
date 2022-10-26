@@ -2,7 +2,7 @@
 .chat{
     margin: auto;
     width: 680px;
-    background-color: red;
+;
 
 }
 header{
@@ -23,11 +23,13 @@ header{
 main{
     background-color:  #E5E5E5;;
     width: 680px;
-    height: 800px;
-
 }
-
+.chatoul{
+    z-index: 1;
+}
 footer{
+    margin: auto;
+    width: 680px;
     font-size: 30px;
     box-sizing: border-box;
     padding: 10px;
@@ -50,4 +52,34 @@ input{
     margin-right: 50px;
     border-radius: 3px;
     height: 50px
+}
+.escondido{
+    display: none;
+}
+.sidebar{
+    position: absolute;
+    right: 0px;
+    top: 0;
+    width: 280px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: grey;
+    z-index: 2;
+
+
+    
+}
+.usuarios{
+    padding: 10px;
+    display: flex;
+    font-size: 18px;
+    align-items: center;
+}
+.usuarios ion-icon{
+    font-size: 30px;
+    margin-right: 12px;
+}
+.privacy{
+    text-align: center;
 }
