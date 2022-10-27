@@ -1,10 +1,14 @@
 
 .chat{
+    font-family: 'Roboto';
     margin: auto;
     width: 680px;
-;
-
-}
+    position: relative;
+;}
+@font-face {
+    font-family: Roboto;
+    src: url(./assets/Roboto-Regular.ttf)
+  }
 header{
     box-sizing: border-box;
     padding: 10px;
@@ -18,14 +22,11 @@ header{
     position: sticky;
     top: 0;
     right: 0;
+    z-index: 1;
     
 }
 main{
-    background-color:  #E5E5E5;;
     width: 680px;
-}
-.chatoul{
-    z-index: 1;
 }
 footer{
     margin: auto;
@@ -56,19 +57,22 @@ input{
 .escondido{
     display: none;
 }
+.sidebar-content{
+    position: sticky;
+    top: 40px;
+    right: 0;
+    margin-top: 40px;
+}
 .sidebar{
     position: absolute;
-    right: 0px;
+    right: 0;
     top: 0;
     width: 280px;
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: grey;
+    background-color: white;
     z-index: 2;
-
-
-    
 }
 .usuarios{
     padding: 10px;
@@ -80,6 +84,40 @@ input{
     font-size: 30px;
     margin-right: 12px;
 }
+span{
+     box-sizing: border-box;
+     width: 100%;
+}
+li{
+    height: 40px;
+    position: relative;
+}
 .privacy{
     text-align: center;
+}
+.time{
+    color: #AAAAAA;
+    margin-left: 5px;
+}
+.name{
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 14px;
+}
+.text{
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+}
+.login{
+    background-color:#DCDCDC;
+}
+.priveteMessage{
+    background-color: #FFDEDE;
+}
+.content{
+    position: absolute;
+    top: 10px;
+    left: 0px;
 }
