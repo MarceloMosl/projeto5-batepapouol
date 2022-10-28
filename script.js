@@ -1,12 +1,16 @@
 let promise;
 let statusReturned;
 let trocaFundo;
+let backGround;
+let userValue;
 function login() {
     const nameUser = prompt("Qual seu nome?")
-    let userValue = { name: nameUser }
+    userValue = { name: nameUser }
     let user = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", userValue)
     user.then(loginOk)
     user.catch(errorLogin)
+    setTimeout(ativo, 1000)
+    setInterval(ativo, 5000);
 } login();
 function errorLogin(errorResponse) {
     alert("Usuario sendo utilizado no momento, escolha outro!")
@@ -23,11 +27,11 @@ function sidebar() {
     sidebarView = document.querySelector(".escondido")
     sidebarView.classList.toggle("sidebar")
 }
-let backGround;
 function incomeMessages(messages) {
     messageContent = messages.data
+    chat1 = document.querySelector(".chatoul");
+    chat1.innerHTML = ""
     for (i = 0; i < messageContent.length; i++) {
-        chat1 = document.querySelector(".chatoul");
         if (messageContent[i].type !== "status") {
             chat1.innerHTML += `<li class="msgs"> <div class="content">
     <span class="time"> (${messageContent[i].time}) </span>
@@ -38,13 +42,11 @@ function incomeMessages(messages) {
     <span class="time"> (${messageContent[i].time}) </span>
     <span class="nome"> ${messageContent[i].from}:</span>
     <span class="text"> ${messageContent[i].text}  </span></div> </li>`
-
-
         }
-
         lastTxt();
-    } changeBackground(messageContent);
-    // setTimeout(getMessages, 3000)
+    } 
+    changeBackground(messageContent);
+    setTimeout(getMessages, 3000)
 }
 function changeBackground(data) {
     trocaFundo = Array.from(document.querySelectorAll(".msgs"))
@@ -60,5 +62,33 @@ function changeBackground(data) {
 function lastTxt() {
     lastMessage = Array.from(document.querySelectorAll(".text"))
     lastMessage = lastMessage[lastMessage.length - 1]
-    lastMessage.scrollIntoView();
+    // lastMessage.scrollIntoView();
+}
+function ativo(){
+ const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", userValue)
+   promise.then(ativoStatus)
+   promise.catch(erroStatus)
+}
+function ativoStatus(status){
+    console.log("status: online")
+}
+function erroStatus(status){
+    console.log("status: offline")
+}
+function sendMsg(){
+    textMsg = document.querySelector(".input")
+    sentMsg ={from: userValue.name,to: "Todos",text: textMsg.value,type: "message",}
+    
+   let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", sentMsg)
+    textMsg.value = ""
+    promise.then(sentLog)
+    promise.catch(errorSend)
+}
+function sentLog(response){
+   console.log("FOI CARLHO")
+}
+function errorSend(response){
+    console.log(response)
+    console.log("oi")
+    window.location.onload()
 }
