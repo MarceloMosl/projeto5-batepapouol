@@ -1,12 +1,8 @@
-let promise;
-let statusReturned;
-let trocaFundo;
-let backGround;
-let userValue;
+let promise, statusReturned, trocaFundo, backGround, userValue, documento, usersNames, iconClicked;
 let usuarioClicado = "Todos";
-let documento;
-let usersNames;
 let toWhom = "message";
+let voltar = document.querySelector(".escondido");
+let checkGreen = document.querySelector(".icon-check")
 function sendToAll() {
     usuarioClicado = "Todos"
 }
@@ -44,7 +40,7 @@ function incomeMessages(messages) {
             if(messageContent[i].type === "private_message"){
                 chat1.innerHTML += `<li class="msgs priveteMessage"> <div class="content">
             <span class="time"> (${messageContent[i].time}) </span>
-            <span class="nome"> ${messageContent[i].from} para ${messageContent[i].to} :</span>
+            <span class="nome"> ${messageContent[i].from} reservadamente para ${messageContent[i].to} :</span>
             <span class="text"> ${messageContent[i].text}  </span></div> </li>`
 
             }else{
@@ -66,7 +62,7 @@ function incomeMessages(messages) {
 function lastTxt() {
     lastMessage = Array.from(document.querySelectorAll(".text"))
     lastMessage = lastMessage[lastMessage.length - 1]
-    // lastMessage.scrollIntoView();
+    lastMessage.scrollIntoView();
 }
 function ativo() {
     const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", userValue)
@@ -110,11 +106,11 @@ function displayParticipants(response) {
         participantsHTML.innerHTML += `
     <div class="options-sidebar" onclick="getUserSide(this)">
         <div class="participants">
-            <ion-icon name="people"></ion-icon>
+            <ion-icon name="person-circle"></ion-icon>
             <p>${usersNames[i].name}</p>
         </div>
         <div class="icon-check">
-            <ion-icon id="ion-icon" name="checkmark-circle"></ion-icon>
+         <ion-icon name="checkmark"></ion-icon>
         </div>
     </div>`
     }
@@ -129,18 +125,19 @@ function getUserSide(element) {
     userClickedSidebar(element);
 }
 function userClickedSidebar(clicked) {
-    selected = document.querySelectorAll(".options-sidebar")
-    for (i = 0; i < selected.length - 1; i++) {
-        if (selected[i].classList.contains("back") === true) {
-            selected[i].classList.remove("back")
-        } else {
-            clicked.classList.add("back")
-        }
-    }
+    console.log(clicked)
+    iconClicked = clicked.children[1]
+    iconClicked.children[0].classList.add("back")
 }
 function sendToAll(){
     toWhom = "message"
+    iconClicked2 = element.children[0]
+    iconClicked2.classList.add("back")
+
 }
 function sendPrivate(){
     toWhom = "private_message"
+}
+function hideSidebar(){
+    voltar.classList.remove("sidebar")   
 }
