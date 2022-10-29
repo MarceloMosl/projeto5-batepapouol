@@ -26,6 +26,7 @@ function getMessages() {
 function sidebar() {
     sidebarView = document.querySelector(".escondido")
     sidebarView.classList.toggle("sidebar")
+    getParticipants();
 }
 function incomeMessages(messages) {
     messageContent = messages.data
@@ -44,7 +45,7 @@ function incomeMessages(messages) {
     <span class="text"> ${messageContent[i].text}  </span></div> </li>`
         }
         lastTxt();
-    } 
+    }
     changeBackground(messageContent);
     setTimeout(getMessages, 3000)
 }
@@ -64,31 +65,57 @@ function lastTxt() {
     lastMessage = lastMessage[lastMessage.length - 1]
     // lastMessage.scrollIntoView();
 }
-function ativo(){
- const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", userValue)
-   promise.then(ativoStatus)
-   promise.catch(erroStatus)
+function ativo() {
+    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", userValue)
+    promise.then(ativoStatus)
+    promise.catch(erroStatus)
 }
-function ativoStatus(status){
+function ativoStatus(status) {
     console.log("status: online")
 }
-function erroStatus(status){
+function erroStatus(status) {
     console.log("status: offline")
+    window.location.reload();
 }
-function sendMsg(){
+function sendMsg() {
     textMsg = document.querySelector(".input")
-    sentMsg ={from: userValue.name,to: "Todos",text: textMsg.value,type: "message",}
-    
-   let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", sentMsg)
+    sentMsg = { from: userValue.name, to: "Todos", text: textMsg.value, type: "message", }
+
+    let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", sentMsg)
     textMsg.value = ""
     promise.then(sentLog)
     promise.catch(errorSend)
 }
-function sentLog(response){
-   console.log("FOI CARLHO")
+function sentLog(response) {
+    console.log("FOI CARLHO")
 }
-function errorSend(response){
+function errorSend(response) {
     console.log(response)
     console.log("oi")
     window.location.onload()
+}
+function getParticipants() {
+    promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants")
+    promise.then(displayParticipants)
+    promise.catch(errorParticipants)
+} let aabb;
+function displayParticipants(response){
+    aabb = response.data
+    participantsHTML = document.querySelector(".users");
+    participantsHTML.innerHTML = ""
+    for (i = 0; i < aabb.length; i++) {
+        participantsHTML.innerHTML += `<div class="usuarios" onclick="getUserSide(this)">
+            <ion-icon name="people"></ion-icon>
+            <p>${aabb[i].name}</p>
+            </div>`
+    }
+    setInterval(getParticipants, 5000)
+}
+function errorParticipants(response) {
+    console.log(response)
+    console.log("error")
+
+}
+function getUserSide(element) {
+    console.log(element)
 }
