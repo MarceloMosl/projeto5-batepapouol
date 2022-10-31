@@ -1,3 +1,8 @@
+/*
+    Bem-vinda ao meu codigo Lessa kkkkk, seguinte alguns elementos do bonus foram implementados porém não estão 100% ex -> escolher uma pessoa para enviar a mensagem tanto privadamente quanto publicamente 
+    esta função existe e FUNCIONA, todavia, os elementos CSS não ficam selecionados corretamente (em outras palavras se voce selecionar ele vai mandar a mensagem  corretamente (tanto privada ou publica) porém não terá a função do "check" ao lado do nome do participante do chat)
+    todos os requisitos basicos foram implementados e todos funcionam
+*/
 let promise, statusReturned, trocaFundo, backGround, userValue, documento, usersNames, iconClicked;
 let usuarioClicado = "Todos";
 let toWhom = "message";
@@ -38,21 +43,21 @@ function incomeMessages(messages) {
     for (i = 0; i < messageContent.length; i++) {
         if (messageContent[i].type === "message" || messageContent[i].type === "private_message" && messageContent[i].to === userValue.name || messageContent[i].type === "private_message" && messageContent[i].from === userValue.name){
             if(messageContent[i].type === "private_message"){
-                chat1.innerHTML += `<li class="msgs priveteMessage"> <div class="content">
+                chat1.innerHTML += `<li class="msgs priveteMessage"> 
             <span class="time"> (${messageContent[i].time}) </span>
             <span class="nome"> ${messageContent[i].from} reservadamente para ${messageContent[i].to} :</span>
-            <span class="text"> ${messageContent[i].text}  </span></div> </li>`
+            <span class="text"> ${messageContent[i].text}  </span> </li>`
 
             }else{
-                chat1.innerHTML += `<li class="msgs"> <div class="content">
+                chat1.innerHTML += `<li class="msgs"> 
             <span class="time"> (${messageContent[i].time}) </span>
             <span class="nome"> ${messageContent[i].from} para ${messageContent[i].to} :</span>
-            <span class="text"> ${messageContent[i].text}  </span></div> </li>`}
+            <span class="text"> ${messageContent[i].text}  </span></li>`}
         } else if (messageContent[i].type == "status") {
-            chat1.innerHTML += `<li class="msgs login"> <div class="content">
+            chat1.innerHTML += `<li class="msgs login"> 
             <span class="time"> (${messageContent[i].time}) </span>
             <span class="nome"> ${messageContent[i].from}:</span>
-            <span class="text"> ${messageContent[i].text}  </span></div> </li>`
+            <span class="text"> ${messageContent[i].text}  </span> </li>`
         } else {
         }
         lastTxt();

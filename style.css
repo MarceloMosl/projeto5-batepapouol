@@ -27,10 +27,6 @@ header{
 main{
     width: 680px;
 }
-.chatoul{
-    box-sizing: border-box;
-}
-
 footer{
     margin: auto;
     width: 680px;
@@ -102,8 +98,8 @@ span{
      width: 100%;
 }
 li{
-    height: 40px;
     position: relative;
+    padding: 10px;
 }
 .privacy{
     text-align: center;
@@ -112,27 +108,24 @@ li{
     color: #AAAAAA;
     margin-left: 5px;
 }
-.name{
+.nome{
     font-weight: bold;
     margin-left: 5px;
     margin-right: 5px;
     font-size: 14px;
+    word-break: break-all;
 }
 .text{
     font-size: 14px;
     font-weight: 400;
     color: #000000;
+    word-break: break-all;
 }
 .login{
     background-color:#DCDCDC;
 }
 .priveteMessage{
     background-color: #FFDEDE;
-}
-.content{
-    position: absolute;
-    top: 10px;
-    left: 0px;
 }
 .participants{
     display: flex;
