@@ -43,18 +43,18 @@ function incomeMessages(messages) {
     for (i = 0; i < messageContent.length; i++) {
         if (messageContent[i].type === "message" || messageContent[i].type === "private_message" && messageContent[i].to === userValue.name || messageContent[i].type === "private_message" && messageContent[i].from === userValue.name){
             if(messageContent[i].type === "private_message"){
-                chat1.innerHTML += `<li class="msgs priveteMessage"> 
+                chat1.innerHTML += `<li data-teste="message" class="msgs priveteMessage"> 
             <span class="time"> (${messageContent[i].time}) </span>
             <span class="nome"> ${messageContent[i].from} reservadamente para ${messageContent[i].to} :</span>
             <span class="text"> ${messageContent[i].text}  </span> </li>`
 
             }else{
-                chat1.innerHTML += `<li class="msgs"> 
+                chat1.innerHTML += `<li data-teste="message" class="msgs"> 
             <span class="time"> (${messageContent[i].time}) </span>
             <span class="nome"> ${messageContent[i].from} para ${messageContent[i].to} :</span>
             <span class="text"> ${messageContent[i].text}  </span></li>`}
         } else if (messageContent[i].type == "status") {
-            chat1.innerHTML += `<li class="msgs login"> 
+            chat1.innerHTML += `<li data-teste="message" class="msgs login"> 
             <span class="time"> (${messageContent[i].time}) </span>
             <span class="nome"> ${messageContent[i].from}:</span>
             <span class="text"> ${messageContent[i].text}  </span> </li>`
@@ -109,12 +109,12 @@ function displayParticipants(response) {
     participantsHTML.innerHTML = ""
     for (i = 0; i < usersNames.length; i++) {
         participantsHTML.innerHTML += `
-    <div class="options-sidebar" onclick="getUserSide(this)">
+    <div data-teste="participant" class="options-sidebar" onclick="getUserSide(this)">
         <div class="participants">
             <ion-icon name="person-circle"></ion-icon>
             <p>${usersNames[i].name}</p>
         </div>
-        <div class="icon-check">
+        <div data-teste="check" class="icon-check">
          <ion-icon name="checkmark"></ion-icon>
         </div>
     </div>`

@@ -13,9 +13,9 @@
 
 <body>
     <div class="chat">
-        <header onclick="sidebar()">
+        <header >
             <img src="./assets/logo 1.jpg" alt="">
-            <ion-icon name="people"></ion-icon>
+            <ion-icon onclick="sidebar()" data-teste="open-participants" name="people"></ion-icon>
         </header>
 
         <main>
@@ -28,12 +28,12 @@
             <div class="sidebar-content">
                 <div class="privacy">
                     <h1>Escolha a visibilidade</h1>
-                    <div class="usuarios" onclick="sendToAll()">
-                        <ion-icon name="lock-open"></ion-icon>
+                    <div class="usuarios" data-teste="all" onclick="sendToAll()">
+                        <ion-icon data-teste="check" name="lock-open"></ion-icon>
                         <p>Publico</p>
                     </div>
-                    <div class="usuarios" onclick="sendPrivate()" >
-                        <ion-icon name="lock-closed"></ion-icon>
+                    <div data-teste="private" class="usuarios" onclick="sendPrivate()" >
+                        <ion-icon data-teste="check"  name="lock-closed"></ion-icon>
                         <p>Enviar Reservadamente</p>
                     </div>
                     <hr>Escolha um contato <br>
@@ -44,8 +44,8 @@
             </div>
         </div>
         <footer class="feet">
-            <input class="input" type="text" value="Escreva aqui...">
-            <ion-icon onclick="sendMsg()" name="paper-plane-outline"></ion-icon>
+            <input data-teste="input-message" class="input" type="text" value="Escreva aqui...">
+            <ion-icon data-teste="send-message" onclick="sendMsg()" name="paper-plane-outline"></ion-icon>
         </footer>
     </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
