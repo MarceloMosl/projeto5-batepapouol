@@ -136,8 +136,8 @@ function userClickedSidebar(clicked) {
 }
 function sendToAll(){
     toWhom = "message"
-    iconClicked2 = element.children[0]
-    iconClicked2.classList.add("back")
+    // iconClicked2 = element.children[0]
+    // iconClicked2.classList.add("back")
 
 }
 function sendPrivate(){
